@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/bin/Debug/net7.0
+/.vs/MDR_Coder/FileContentIndex
+/.vs/MDR_Coder/DesignTimeBuild
+/.vs/MDR_Coder/v17
+/.vs/ProjectEvaluation

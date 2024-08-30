@@ -25,8 +25,22 @@ public class ConditionHelper
 
     public int ExecuteSQL(string sql_string)
     {
-        using var conn = new NpgsqlConnection(_db_conn);
-        return conn.Execute(sql_string);
+        try
+        {
+            using var conn = new NpgsqlConnection(_db_conn);
+            // Increase the timeout value
+            return conn.Execute(sql_string, commandTimeout: 240);
+        }
+        catch (NpgsqlException npgsqlException)
+        {
+            Console.WriteLine("A PostgreSQL error occurred during the database operation: " + npgsqlException.Message);
+            throw;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("An error occurred: " + ex.Message);
+            throw; 
+        }
     }
 
     private int GetMinId(string table_name)
